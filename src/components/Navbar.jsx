@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-scroll";
 
-function Navbar() {
+const Navbar = () => {
+
   return (
     <nav className="navbar">
       <ul className="navbar-nav">
