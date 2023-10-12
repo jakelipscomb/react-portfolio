@@ -1,8 +1,7 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/main.css';
-import App from './App';
-import { createBrowserRouter, RouterProvider } from 'react';
+import App from './App.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Import your pages
 import ErrorPage from './pages/Error';
 import AboutPage from './pages/About';

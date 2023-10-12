@@ -1,17 +1,13 @@
-import React, { useState } from "react";
 import { Link } from "react-scroll";
-// import resumeView from '../media/.pdf';
+
+import { useState } from 'react';
 
 const Footer = () => {
-  const [open, setOpen] = useState(false);
+  const [setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(true);
     navigator.clipboard.writeText("jlipscombtx95@gmail.com");
-  };
-
-  const handleClickAway = () => {
-    setOpen(false);
   };
 
   return (
