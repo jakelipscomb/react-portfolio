@@ -7,6 +7,7 @@ import ErrorPage from './pages/Error';
 import AboutPage from './pages/About';
 import ProjectsPage from './pages/Projects';
 import ResumePage from './pages/Resume';
+import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
@@ -15,15 +16,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'about',
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: '/about',
         element: <AboutPage />,
       },
       {
-        path: 'projects',
+        path: '/projects',
         element: <ProjectsPage />,
       },
       {
-        path: 'resume',
+        path: '/resume',
         element: <ResumePage />,
       },
     ],
