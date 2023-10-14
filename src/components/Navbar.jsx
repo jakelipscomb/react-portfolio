@@ -10,11 +10,16 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-// import AdbIcon from '@mui/icons-material/Adb';
 import { useState } from "react";
+import { Link } from "react-router-dom"; // Import React Router Link
+import Switch from "@mui/material/Switch";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
-const pages = ["Home", "About", "Projects", "Resume"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+const pages = ["About Me", "Projects", "Contact", "Resume"];
+const settings = ["Download My Resume"];
+const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -39,19 +44,18 @@ const Navbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={Link} // Use Link for navigation
+            to="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "yellow",
               textDecoration: "none",
             }}
           >
@@ -65,7 +69,8 @@ const Navbar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="yellow"
+              sx={{ color: "yellow", textDecoration: 'none' }}
             >
               <MenuIcon />
             </IconButton>
@@ -89,17 +94,19 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link to={page === "About Me" ? "/" : `/${page}`} style={{ textDecoration: 'none' }}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
+
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="/"
+            component={Link} // Use Link for navigation
+            to="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -107,7 +114,7 @@ const Navbar = () => {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "yellow",
               textDecoration: "none",
             }}
           >
@@ -118,18 +125,24 @@ const Navbar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                href={page === "Home" ? "/" : `/${page}`}
-                sx={{ my: 2, color: "white", display: "block" }}
+                component={Link} // Use Link for navigation
+                to={page === "About Me" ? "/" : `/${page}`}
+                sx={{ my: 2, color: "yellow", display: "block", textDecoration: 'none' }}
               >
                 {page}
               </Button>
             ))}
           </Box>
+          <FormGroup>
+            <FormControlLabel control={<Switch />} label="Light / Dark Mode" sx={{
+               my: 2, color: "yellow", display: "block", textDecoration: 'none' }} />
+          </FormGroup>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Jake Lipscomb" src={require("../assets/images/jake-profile.png")} sx={{ width: 70, height: 70 }} />
+                <Avatar alt="Jake Lipscomb" src={require("../assets/images/jake-profile.png")} sx={{
+                   width: 70, height: 70 }} />
               </IconButton>
             </Tooltip>
             <Menu

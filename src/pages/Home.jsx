@@ -52,6 +52,8 @@ function SwipeableTextMobileStepper() {
     setActiveStep(step);
   };
 
+
+  
   return (
     <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
       <Paper
