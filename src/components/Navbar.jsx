@@ -1,25 +1,26 @@
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import { useState } from "react";
-import { Link } from "react-router-dom"; // Import React Router Link
-import Switch from "@mui/material/Switch";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import { useState } from 'react';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Avatar,
+  Button,
+  Tooltip,
+  MenuItem,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { Link } from 'react-router-dom';
+import { useThemeContext } from '../theme/ThemeContextProvider';
+import { getDesignTokens } from '../theme/theme';
 
-
-const pages = ["About Me", "Projects", "Contact", "Resume"];
-const settings = ["Download My Resume"];
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
+const pages = ['About Me', 'Projects', 'Contact', 'Resume'];
+const settings = ['Download My Resume'];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -28,6 +29,7 @@ const Navbar = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -40,6 +42,9 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  const { toggleColorMode, theme } = useThemeContext();
+  const designTokens = getDesignTokens(theme.palette.mode);
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -47,30 +52,30 @@ const Navbar = () => {
           <Typography
             variant="h6"
             noWrap
-            component={Link} // Use Link for navigation
+            component={Link}
             to="/"
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "yellow",
-              textDecoration: "none",
+              letterSpacing: '.3rem',
+              color: theme.palette.mode === 'dark' ? '#fff' : '#000',
+              textDecoration: 'none',
             }}
           >
             Jake Lipscomb | Portfolio
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="yellow"
-              sx={{ color: "yellow", textDecoration: 'none' }}
+              color='theme.palette.mode === "dark" ? "#fff" : "#000"'
+              sx={{ color: theme.palette.mode === 'dark' ? '#fff' : '#000' }}
             >
               <MenuIcon />
             </IconButton>
@@ -78,23 +83,23 @@ const Navbar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+                vertical: 'bottom',
+                horizontal: 'left',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
+                vertical: 'top',
+                horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link to={page === "About Me" ? "/" : `/${page}`} style={{ textDecoration: 'none' }}>
+                  <Link to={page === 'About Me' ? '/' : `/${page}`} style={{ textDecoration: 'none' }}>
                     <Typography textAlign="center">{page}</Typography>
                   </Link>
                 </MenuItem>
@@ -105,58 +110,56 @@ const Navbar = () => {
           <Typography
             variant="h5"
             noWrap
-            component={Link} // Use Link for navigation
+            component={Link}
             to="/"
             sx={{
               mr: 2,
-              display: { xs: "flex", md: "none" },
+              display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: "monospace",
+              fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "yellow",
-              textDecoration: "none",
+              letterSpacing: '.3rem',
+              color: theme.palette.mode === 'dark' ? '#fff' : '#000',
+              textDecoration: 'none',
             }}
           >
             Jake Lipscomb | Portfolio
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                component={Link} // Use Link for navigation
-                to={page === "About Me" ? "/" : `/${page}`}
-                sx={{ my: 2, color: "yellow", display: "block", textDecoration: 'none' }}
+                component={Link}
+                to={page === 'About Me' ? '/' : `/${page}`}
+                sx={{ my: 2, color: theme.palette.mode === 'dark' ? '#fff' : '#000', display: 'block', textDecoration: 'none' }}
               >
                 {page}
               </Button>
             ))}
           </Box>
-          <FormGroup>
-            <FormControlLabel control={<Switch />} label="Light / Dark Mode" sx={{
-               my: 2, color: "yellow", display: "block", textDecoration: 'none' }} />
-          </FormGroup>
+            <IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color="inherit">
+              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Jake Lipscomb" src={require("../assets/images/jake-profile.png")} sx={{
-                   width: 70, height: 70 }} />
+                <Avatar alt="Jake Lipscomb" src={require('../assets/images/jake-profile.png')} sx={{ width: 70, height: 70 }} />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
+                vertical: 'top',
+                horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}

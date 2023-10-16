@@ -7,16 +7,31 @@ import CardMedia from '@mui/material/CardMedia';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import PhoneIcon from '@mui/icons-material/Phone';
+import MailIcon from '@mui/icons-material/Mail';
+import validator from 'validator';
 
 const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const isEmailValid = (value) => validator.isEmail(value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
-    // Add code to send form data to the server or API here
+
+    if (isEmailValid(email)) {
+      console.log(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+      // Clear input fields
+      setName('');
+      setEmail('');
+      setMessage('');
+      setEmailError('');
+    } else {
+      setEmailError('Please enter a valid email address.');
+    }
   };
 
   return (
@@ -28,6 +43,16 @@ const Contact = () => {
               Contact Me
             </Typography>
           </CardContent>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', p: 2 }}>
+            <Button variant="outlined" onClick={() => window.location.href = 'mailto:jlipscombtx95@gmail.com'} sx={{ m: 2 }}>
+              <MailIcon sx={{ mr: 1 }} />
+              Email
+            </Button>
+            <Button variant="outlined" onClick={() => window.location.href = 'tel:+9564077952'} sx={{ m: 2 }}>
+              <PhoneIcon sx={{ mr: 1 }} />
+              Phone Number
+            </Button>
+          </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column', pl: 2, pr: 2 }}>
             <form onSubmit={handleSubmit}>
               <TextField
@@ -45,6 +70,8 @@ const Contact = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 fullWidth
                 required
+                error={emailError !== ''}
+                helperText={emailError}
               />
               <TextField
                 label="Leave a message"
@@ -76,4 +103,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

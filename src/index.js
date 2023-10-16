@@ -4,7 +4,6 @@ import App from './App.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // Import your pages
 import ErrorPage from './pages/Error';
-import AboutPage from './pages/About';
 import ProjectsPage from './pages/Projects';
 import ResumePage from './pages/Resume';
 import ContactPage from './pages/Contact';
@@ -19,10 +18,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-      },
-      {
-        path: '/about',
-        element: <AboutPage />,
       },
       {
         path: '/projects',
