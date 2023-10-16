@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f336fc80.css",
+    "main.js": "/static/js/main.1bee7656.js",
+    "static/media/mock-restaurant-build.gif": "/static/media/mock-restaurant-build.66afbc674b5660339885.gif",
+    "static/media/ellsworthkelly.jpg": "/static/media/ellsworthkelly.a140cc097b2c575d9d03.jpg",
+    "static/media/WoDN-fullpage.png": "/static/media/WoDN-fullpage.9b3406603135c8e22a5f.png",
+    "static/media/employee-tracker.png": "/static/media/employee-tracker.6cd619b010111d4ebc75.png",
+    "static/media/jake-profile.png": "/static/media/jake-profile.c1287face90d88fa09c7.png",
+    "static/media/weatherapp2.png": "/static/media/weatherapp2.4aecef2000127caa247e.png",
+    "static/media/text-editor.png": "/static/media/text-editor.4e2581de4d2e9e0cd916.png",
+    "static/media/artJake-profile.png": "/static/media/artJake-profile.ecaf2b0d1f59489ad6f0.png",
+    "static/media/note-taker.png": "/static/media/note-taker.190ae051ba29140b36e8.png",
+    "index.html": "/index.html",
+    "main.f336fc80.css.map": "/static/css/main.f336fc80.css.map",
+    "main.1bee7656.js.map": "/static/js/main.1bee7656.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f336fc80.css",
+    "static/js/main.1bee7656.js"
+  ]
+}
