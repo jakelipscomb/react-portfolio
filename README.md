@@ -15,7 +15,7 @@ by Jake Lipscomb
 - [License](#license)
 
 ## Description
-This is my portfolio built with React and Material UI. It is a single page application that uses React Router to navigate between pages. It is fully responsive and mobile friendly. It is deployed on Netlify and can be viewed [here](https://jake-lipscomb-portfolio.netlify.app/).
+This is my portfolio built with React and Material UI. It is a single page application that uses React Router to navigate between pages. It is fully responsive and mobile friendly. It is deployed on Netlify and can be viewed [here](https://jakelipscomb.netlify.app/).
 
 ## Features
 - Single page application

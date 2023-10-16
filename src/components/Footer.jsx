@@ -16,12 +16,12 @@ const Footer = () => {
   const backgroundColor = theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[800];
 
   return (
-
-      <Container sx={{ backgroundColor, primary: 'inherit', padding: '20px 0' }}>
-        <Typography variant="body2" align="center">
+    <div style={{ backgroundColor }}>
+      <Container sx={{ padding: '20px 0', textAlign: 'center' }}>
+        <Typography variant="body2">
           © 2023 Jake Lipscomb | Portfolio
         </Typography>
-        <Typography variant="body2" align="center">
+        <Typography variant="body2">
           All Rights Reserved.
         </Typography>
         <Grid container justifyContent="center" spacing={2} style={{ marginTop: '10px' }}>
@@ -47,6 +47,7 @@ const Footer = () => {
           </Grid>
         </Grid>
       </Container>
+    </div>
   );
 };
 
